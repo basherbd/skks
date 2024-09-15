@@ -1,5 +1,5 @@
 from node
-workdir /user/src/app
+workdir /user/src/server
 copy package*.json ./
 run npm install
 copy . .
