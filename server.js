@@ -11,9 +11,6 @@ app.use(express.static(__dirname));
 
 mongoose.connect('mongodb+srv://basherbd:admin@backenddb.2fsv4.mongodb.net/?retryWrites=true&w=majority&appName=BackendDB');
 
-/*mongoose.connect('mongodb+srv://admin:admin@mfm.qjqpc.mongodb.net/?retryWrites=true&w=majority&appName=mfm');*/
-
-
 const connect = mongoose.connection;
 
 connect.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -23,9 +20,18 @@ connect.once('open', () => {
 });
 
 const userSchema = new mongoose.Schema({
-    name : String,
-    email : String,
-    age : Number
+    month : String,
+    saving : Number,
+    profit : Number,
+    withdraw : Number,
+    total : Number,
+    loan : Number,
+    installment : Number,
+    installment_number : Number,
+    installment_due : Number,
+    receiver : String,
+    date : String,
+    remark : String
 });
 
 const User = mongoose.model('User', userSchema);
@@ -36,12 +42,21 @@ app.get('/', async (request, response) => {
 
 app.post('/users', async (request, response) => {
     const user = new User({
-        name : request.body.name,
-        email : request.body.email,
-        age : request.body.age
+        month : request.body.month,
+        saving : request.body.saving,
+        profit : request.body.profit,
+        withdraw : request.body.withdraw,
+        total : request.body.total,
+        loan : request.body.loan,
+        installment : request.body.installment,
+        installment_number : request.body.installment_number,
+        installment_due : request.body.installment_due,
+        receiver : request.body.receiver,
+        date : request.body.date,
+        remark : request.body.remark
     });
     const newItem = await user.save();
-    response.status(201).json({scuccess:true});
+    response.status(201).json({success:true});
 });
 
 app.get('/users', async (request, response) => {
@@ -58,9 +73,20 @@ app.put('/users/:id', async (request, response) => {
     const userId = request.params.id;
     // Fetch the user from the database
     const user = await User.findById(userId);
-    user.name = request.body.name;
-    user.email = request.body.email;
-    user.age = request.body.age;
+
+    user.month = request.body.month;
+    user.saving = request.body.saving;
+    user.profit = request.body.profit;
+    user.withdraw = request.body.withdraw;
+    user.total = request.body.total;
+    user.loan = request.body.loan;
+    user.installment = request.body.installment;
+    user.installment_number = request.body.installment_number;
+    user.installment_due = request.body.installment_due;
+    user.receiver = request.body.receiver;
+    user.date = request.body.date;
+    user.remark = request.body.remark;
+
     const updatedItem = await user.save();
     response.status(200).json(updatedItem);
 });
