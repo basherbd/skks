@@ -2,7 +2,7 @@
 FROM node:20
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
@@ -14,6 +14,6 @@ RUN npm install
 COPY . .
 
 # Expose the port
-EXPOSE 5000
+EXPOSE 3000
 
 CMD [ "node", "server.js" ]
