@@ -209,7 +209,7 @@ function fetchSingleData(id){
         return response.json();
     })
     .then(data => {
-        makeModal('Edit User', 'Edit', 'editData');
+        makeModal('Update User', 'Update', 'editData');
         document.getElementById('month').value = data.month;
         document.getElementById('saving').value = data.saving;
         document.getElementById('profit').value = data.profit;
