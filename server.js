@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname));
 
-mongoose.connect('mongodb+srv://basher:admin@skks-cluster.l3cc7.mongodb.net/r_basher?retryWrites=true&w=majority&appName=skks-cluster');
+mongoose.connect('mongodb+srv://basherbd:admin@backenddb.2fsv4.mongodb.net/?retryWrites=true&w=majority&appName=BackendDB');
 
 const connect = mongoose.connection;
 
