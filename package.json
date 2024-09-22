@@ -83,8 +83,11 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "predeploy": "npm run start",
+    "deploy": "gh-pages -d start"
   },
+  "homepage": "https://basherbd.github.io/skks/",
   "keywords": [],
   "author": "",
   "license": "ISC",
